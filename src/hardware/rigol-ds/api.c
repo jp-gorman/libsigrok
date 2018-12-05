@@ -182,6 +182,7 @@ enum series {
 	DSO1000,
 	DS1000Z,
 	DS4000,
+	MSO4000,
 	MSO7000A,
 };
 
@@ -209,6 +210,8 @@ static const struct rigol_ds_series supported_series[] = {
 		{50, 1}, {1, 1000}, 12, 1200, 12000000},
 	[DS4000] = {VENDOR(RIGOL), "DS4000", PROTOCOL_V4, FORMAT_IEEE488_2,
 		{1000, 1}, {1, 1000}, 14, 1400, 14000},
+	[MSO4000] = {VENDOR(RIGOL), "MSO4000", PROTOCOL_V3, FORMAT_IEEE488_2,
+		{50, 1}, {500, 1000000}, 14, 1400, 14000},	
 	[MSO7000A] = {VENDOR(AGILENT), "MSO7000A", PROTOCOL_V4, FORMAT_IEEE488_2,
 		{50, 1}, {2, 1000}, 10, 1000, 8000000},
 };
@@ -268,6 +271,7 @@ static const struct rigol_ds_model supported_models[] = {
 	{SERIES(DS1000Z), "MSO1104Z", {5, 1000000000}, CH_INFO(4, true), std_cmd},
 	{SERIES(DS1000Z), "MSO1074Z-S", {5, 1000000000}, CH_INFO(4, true), std_cmd},
 	{SERIES(DS1000Z), "MSO1104Z-S", {5, 1000000000}, CH_INFO(4, true), std_cmd},
+	{SERIES(MSO4000), "MSO4014", {5, 1000000000}, 4, true},
 	{SERIES(DS4000), "DS4024", {1, 1000000000}, CH_INFO(4, false), std_cmd},
 	/* TODO: Digital channels are not yet supported on MSO7000A. */
 	{SERIES(MSO7000A), "MSO7034A", {2, 1000000000}, CH_INFO(4, false), mso7000a_cmd},
